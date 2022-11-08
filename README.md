@@ -4,15 +4,13 @@
 Partner Information
 -------------------
 
-There will be an endpoint that will return all of the data in the database for a professor regarding survey answers. The service will return this data in json format via an http call. 
+There will be an endpoint that will return all of the data in the database for a professor regarding survey answers. The service will return this data in JSON format via an http call. 
 
 Example call on the command line:
-
-curl http://localhost:8080/v1/{professor username}/data
+`curl http://localhost:8080/v1/{professor username}/data`
 
 So if I wanted the data for myself, a professor, and my username was `bkuritz`, I would call:
-
-curl http://localhost:8080/v1/bkuritz/data
+`curl http://localhost:8080/v1/bkuritz/data`
 
 An example result would look like:
 
@@ -44,15 +42,15 @@ An example result would look like:
 }
 ```
 
-Under survey data, we list each survey by name - so here, we have data for a survey named "example_survey_1" and data for a survey named "example_survey_2". Looking at "example_survey_1" as an example, we see the API returns a status for the survey - open or closed. Then, the survey returns answers provided for each student in json format. 
+Under survey data, we list each survey by name - so here, we have data for a survey named "example_survey_1" and data for a survey named "example_survey_2". Looking at "example_survey_1" as an example, we see the API returns a status for the survey - open or closed. Then, the survey returns answers provided for each student in JSON format. 
 
 You also filter on survey name and student username.
 
 Example call on the command line for filtering by survey name:
-curl http://localhost:8080/v1/{professor username}/data?survey={survey-name}
+`curl http://localhost:8080/v1/{professor username}/data?survey={survey-name}`
 
 So if I wanted the data for questionnaire "dogs-vs-cats" as a professor, and my username was `bkuritz`, I would call:
-curl http://localhost:8080/v1/bkuritz/data?survey=dogs-vs-cats
+`curl http://localhost:8080/v1/bkuritz/data?survey=dogs-vs-cats`
 
 Example result
 
@@ -74,10 +72,10 @@ Example result
 }
 ```
 Example call on the command line for filtering by student username:
-curl http://localhost:8080/v1/{professor username}/data?student={student username}
+`curl http://localhost:8080/v1/{professor username}/data?student={student username}`
 
 So if I wanted the data the student with username "cdavis" has submitted to all of my questionnaire, and my professor username was `bkuritz`, I would call:
-curl http://localhost:8080/v1/bkuritz/data?student=cdavis
+`curl http://localhost:8080/v1/bkuritz/data?student=cdavis`
 
 Example result
 
@@ -107,6 +105,7 @@ In order to access this API call, you'll have to run it locally. Ideally, this w
 3. Run `docker-compose up -d`, which will spin up all services for this project as daemons.
 4. You can now run the above commands on the ommand line to hit the services. 
 5. For your project, you can use whatever requests library to send http requests to this service. 
+6. From here, you should be able to use a library to return a CSV file from the returned JSON of these http requests. 
 
                 
       
