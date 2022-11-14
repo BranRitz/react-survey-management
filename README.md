@@ -7,10 +7,10 @@ Partner Information
 There will be an endpoint that will return all of the data in the database for a professor regarding survey answers. The service will return this data in JSON format via an http call. 
 
 Example call on the command line:
-`curl http://localhost:8080/v1/{professor username}/data`
+`curl http://localhost:8080/v1/professor/data/{username}`
 
 So if I wanted the data for myself, a professor, and my username was `bkuritz`, I would call:
-`curl http://localhost:8080/v1/bkuritz/data`
+`curl http://localhost:8080/v1/professor/data/{username}`
 
 An example result would look like:
 
@@ -47,10 +47,10 @@ Under survey data, we list each survey by name - so here, we have data for a sur
 You also filter on survey name and student username.
 
 Example call on the command line for filtering by survey name:
-`curl http://localhost:8080/v1/{professor username}/data?survey={survey-name}`
+`curl http://localhost:8080/v1/professor/data/bkuritz?survey={survey-name}`
 
 So if I wanted the data for questionnaire "dogs-vs-cats" as a professor, and my username was `bkuritz`, I would call:
-`curl http://localhost:8080/v1/bkuritz/data?survey=dogs-vs-cats`
+`curl http://localhost:8080/v1/professor/data/bkuritz?survey=dogs-vs-cats`
 
 Example result
 
@@ -102,10 +102,11 @@ In order to access this API call, you'll have to run it locally. Ideally, this w
 
 1. Clone this repo.
 2. On the command line, move into the top level directory of the repo. You should see a "Dockerfile" and "docker-compose.yml" file. 
-3. Run `docker-compose up -d`, which will spin up all services for this project as daemons.
-4. You can now run the above commands on the ommand line to hit the services. 
-5. For your project, you can use whatever requests library to send http requests to this service. 
-6. From here, you should be able to use a library to return a CSV file from the returned JSON of these http requests. 
+3. Run `pip install -r requirements.txt` to install all required 
+4. Run `docker-compose up -d`, which will spin up all services for this project as daemons.
+5. You can now run the above commands on the ommand line to hit the services. 
+6. For your project, you can use whatever requests library to send http requests to this service. 
+7. From here, you should be able to use a library to return a CSV file from the returned JSON of these http requests. 
 
                 
       
